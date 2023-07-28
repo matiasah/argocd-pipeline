@@ -7,18 +7,20 @@ spec:
   gateways:
   - gateway/istio-ingressgateway
   hosts:
-  - "*"
+  - localhost
+  - host.docker.internal
+  - *.ddns.net
   http:
   - match:
     - uri:
         prefix: /argocd/
     name: http
     rewrite:
-      uri: /
+      uri: /argocd/
     route:
     - destination:
         host: argo-cd-argocd-server.argo-cd.svc.cluster.local
         port:
-          number: 80
-        subset: http
+          number: 443
+        subset: https
       weight: 100
