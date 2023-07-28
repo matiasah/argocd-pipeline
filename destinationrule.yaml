@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: argo-cd
-  namespace: argo-cd-argocd-server
+  name: argo-cd-argocd-server
+  namespace: argo-cd
 spec:
   host: argo-cd-argocd-server.argo-cd.svc.cluster.local
   subsets:
