@@ -16,3 +16,7 @@ repoServer:
 
 applicationSet:
   replicaCount: 2
+
+configs:
+  params:
+    "server.rootpath": "/argocd/"
