@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argo-cd-argocd-server
+  namespace: argo-cd
+spec:
+  gateways:
+  - gateway/istio-ingressgateway
+  hosts:
+  - "*"
+  http:
+  - match:
+    - uri:
+        prefix: /argocd/
+    name: http
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: argo-cd-argocd-server.argo-cd.svc.cluster.local
+        port:
+          number: 80
+        subset: http
+      weight: 100
