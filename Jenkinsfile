@@ -138,9 +138,6 @@ pipeline {
 
                         // Template
                         sh "helm template argo-cd -f argo-cd-values.yaml argo/argo-cd ${OPTIONS} --namespace argo-cd > argo-cd.yaml"
-
-                        // Print Yaml
-                        sh "cat argo-cd.yaml"
         
                     }
 
@@ -152,6 +149,9 @@ pipeline {
   
                         // Kustomize
                         sh "kustomize build > argo-cd.yaml"
+
+                        // Print Yaml
+                        sh "cat argo-cd.yaml"
   
                     }
   
