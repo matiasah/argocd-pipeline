@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: argo-cd
+  namespace: argo-cd-argocd-server
+spec:
+  host: argo-cd-argocd-server.argo-cd.svc.cluster.local
+  subsets:
+  - labels:
+      app.kubernetes.io/name: argocd-server
+      app.kubernetes.io/instance: argo-cd
+      app.kubernetes.io/component: server
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/part-of: argocd
+      app.kubernetes.io/version: "v2.7.9"
+    name: http
+  trafficPolicy:
+    tls:
+      mode: DISABLE
