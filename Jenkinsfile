@@ -146,6 +146,17 @@ pipeline {
 
                 }
 
+                container ("kustomize") {
+  
+                    script {
+  
+                        // Kustomize
+                        sh "kustomize build > argo-cd.yaml"
+  
+                    }
+  
+                }
+
             }
 
         }
