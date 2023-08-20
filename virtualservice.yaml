@@ -9,7 +9,6 @@ spec:
   hosts:
   - localhost
   - host.docker.internal
-  - *.ddns.net
   http:
   - match:
     - uri:
